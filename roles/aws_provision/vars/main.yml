@@ -1,0 +1,5 @@
+---
+# vars file for aws_provision
+param_user: marek.kolosowski-atos.net
+param_repo_base: http://www.opentlc.com/download/ansible_bootcamp
+param_password: top4Ranking@
