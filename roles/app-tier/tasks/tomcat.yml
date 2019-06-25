@@ -37,7 +37,8 @@
     src: templates/index.html.app1.j2
     dest: /usr/share/tomcat/webapps/ansible/index.html
     mode: 0644
-  when: inventory_hostname == 'app1'
+#  when: inventory_hostname == 'app1'
+  delegate_to: 10.10.10.15
   tags:
     - apps
     - tomcat
@@ -47,7 +48,8 @@
     src: templates/index.html.app2.j2
     dest: /usr/share/tomcat/webapps/ansible/index.html
     mode: 0644
-  when: group_names == 'app2'
+#  when: group_names == 'app2'
+  delegate_to: 10.10.10.4
   tags:
     - apps
     - tomcat
