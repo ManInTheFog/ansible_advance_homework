@@ -1,3 +1,5 @@
+---
+# tasks file for roles/osp-instance-delete
   - name: Fetch Instance Info
     os_server_facts:
       cloud: ospcloud
@@ -19,3 +21,4 @@
     with_items: "{{ openstack_info.ansible_facts.openstack_servers }}"
     loop_control:
       label: "{{ item.name }}"
+   

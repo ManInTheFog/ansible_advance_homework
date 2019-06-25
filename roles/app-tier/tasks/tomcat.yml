@@ -28,12 +28,16 @@
     - apps
     - tomcat
 
+- name: Print host groups
+  debug:
+    msg: "{{ groups }}"
+
 - name: Copy static index.html on app 1
   template:
     src: templates/index.html.app1.j2
     dest: /usr/share/tomcat/webapps/ansible/index.html
     mode: 0644
-  when: inventory_hostname == "app1"
+  when: inventory_hostname == 'app1'
   tags:
     - apps
     - tomcat
@@ -43,7 +47,8 @@
     src: templates/index.html.app2.j2
     dest: /usr/share/tomcat/webapps/ansible/index.html
     mode: 0644
-  when: inventory_hostname == "app2"
+  when: group_names == 'app2'
   tags:
     - apps
     - tomcat
+

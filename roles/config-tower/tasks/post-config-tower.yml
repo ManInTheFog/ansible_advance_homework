@@ -59,3 +59,4 @@
   file:
     name: /root/secret.pem
     state: absent
+

@@ -1,5 +1,5 @@
 ---
-# tasks file for aws_provision
+# tasks file for aws-provision role    
 - name: create bin directory
   file:
     path: /root/bin
@@ -39,12 +39,13 @@
     - /root/common.sh
     - /root/order_svc.sh
 
+# Using this script will always deploy environments in the us-east-1 region.
+# TODO: this shell task is not working yet!
 - name: order service on opentlc
   shell: source /root/credential.rc; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8'
   args:
     chdir: /root
 
-#if you have already provisioned app, then this tasks can be skipped
 - name: Wait for mail
   pause:
     minutes: 10 
