@@ -1,6 +1,6 @@
 galaxy_info:
-  author: Jakub Wosko
-  description: provision RHOSP instances to support the deployment of a three-tier app 
+  author: Marek Kolosowski
+  description: provision RHOSP instances
   company: Atos
 
   # If the issue tracker for your role is not on github, uncomment the
