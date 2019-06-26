@@ -22,7 +22,6 @@
   with_dict: "{{ osp_servers }}"
   loop_control:
     label: "{{ item.value.name }}"
-  register: vm
 
 - name: Add floating IP to Servers
   os_floating_ip:
@@ -33,7 +32,7 @@
   with_dict: "{{ osp_servers }}"
   loop_control:
     label: "{{ item.value.name }}"
-  register: vmFloatingIP   
+  register: floatingIP   
 
 - name: Wait for servers to be available
   wait_for:
@@ -41,7 +40,7 @@
     port: 22
     search_regex: OpenSSH
     timeout: 600
-  with_items: "{{ vmFloatingIP.results }}"
+  with_items: "{{ floatingIP.results }}"
   loop_control:
     label: "{{ item.item.value.name }}"
   delegate_to: "{{ inventory_hostname }}" 
