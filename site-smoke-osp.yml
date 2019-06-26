@@ -12,20 +12,20 @@
 
   - name: Show frontend public IP 
     debug:
-      msg: "Frontend server public IP addres is: {{ openstack_info.ansible_facts.openstack_servers[0].public_v4 }}"
+      msg: "Frontend IP addres is: {{ openstack_info.ansible_facts.openstack_servers[0].public_v4 }}"
 
   - name: Curl website
     uri:
       url: http://{{ openstack_info.ansible_facts.openstack_servers[0].public_v4 }}
       return_content: yes
-    register: webpage
+    register: curlpage
     ignore_errors: yes
     tags:
       - osp.smoke
 
-  - name: show curl output
+  - name: Curl output
     debug: 
-      var: webpage.content
+      var: curlpage.content
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
