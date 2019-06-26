@@ -1,5 +1,4 @@
 ---
-
 # tasks file for osp.servers
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   os_server:
@@ -35,11 +34,6 @@
   loop_control:
     label: "{{ item.value.name }}"
   register: vmFloatingIP   
-
-- name: Show floating (public) IP
-  debug:
-    msg: "Server name: {{ vm.results.0.server.name  }}; configured IP: {{ vmFloatingIP.results.0.floating_ip.floating_ip_address }}"
-  ignore_errors: yes
 
 - name: Wait for servers to be available
   wait_for:
